@@ -1,31 +1,52 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import Searchbar from 'components/Searchbar';
 import ImageGallery from 'components/ImageGallery';
 
+import 'react-toastify/dist/ReactToastify.css';
 
-export default class App extends Component {
-  state = {
-    keyword: '',
-  };
+export default function App() {
+  const [keyword, setKeyword] = useState('')
 
-  handleSearchFormSubmit = keyword => {
-    this.setState({ keyword });
-  };
+  const handleSearchFormSubmit = keyword => setKeyword(keyword)
 
-  render() {
-    return (
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          gridGap: '16px',
-          paddingBottom: '24px',
-        }}
-      >
-        <Searchbar onSubmit={this.handleSearchFormSubmit} />
-        <ImageGallery keyword={this.state.keyword} />
-        {/* <ToastContainer/> */}
-      </div>
-    );
-  }
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr',
+        gridGap: '16px',
+        paddingBottom: '24px',
+      }}
+    >
+      <Searchbar onSubmit={handleSearchFormSubmit} />
+      <ImageGallery keyword={keyword} />
+    </div>
+  );
 }
+
+// export default class App extends Component {
+//   state = {
+//     keyword: '',
+//   };
+
+//   handleSearchFormSubmit = keyword => {
+//     this.setState({ keyword });
+//   };
+
+//   render() {
+//     return (
+//       <div
+//         style={{
+//           display: 'grid',
+//           gridTemplateColumns: '1fr',
+//           gridGap: '16px',
+//           paddingBottom: '24px',
+//         }}
+//       >
+//         <Searchbar onSubmit={this.handleSearchFormSubmit} />
+//         <ImageGallery keyword={this.state.keyword} />
+//         {/* <ToastContainer/> */}
+//       </div>
+//     );
+//   }
+// }
