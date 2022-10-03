@@ -23,7 +23,7 @@ export default class Searchbar extends Component {
         evt.preventDefault();
 
         if (this.state.keyword.trim() === '') {
-            alert('Enter keywor for search!');
+            alert('What would you like to find?');
             return;
         }
 
