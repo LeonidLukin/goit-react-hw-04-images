@@ -10,19 +10,17 @@ export default function Modal({ onCloseModal, largeImage }) {
     useEffect(() => {
         window.addEventListener('keydown', hendleKeyDown);
 
-        return () => {
-            window.removeEventListener('keydown', this.hendleKeyDown);
-        }
-    })
+        return () => window.removeEventListener('keydown', hendleKeyDown);
+    });
 
-    const hendleKeyDown = evt => {
-        if (evt.code === 'Escape') {
-            this.props.onCloseModal();
+    const hendleKeyDown = e => {
+        if (e.code === 'Escape') {
+            onCloseModal();
         }
     };
 
-    const hendleOverlayClick = evt => {
-        if (evt.currentTarget === evt.target) {
+    const hendleOverlayClick = e => {
+        if (e.currentTarget === e.target) {
             onCloseModal();
         }
     };
